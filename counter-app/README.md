@@ -1,4 +1,4 @@
-#🔢 Counter App
+🔢 Counter App
 
 A simple React app that lets you increment, decrement, and reset a counter value.
 Built to practice basic state management with useState.
