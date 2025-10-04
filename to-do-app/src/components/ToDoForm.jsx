@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
+import { useState } from "react"
 
-export default function ToDoForm({addToDo}) {
+export default function ToDoForm({handleAddTodo}) {
 
   const [input,setInput] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let todo = {
-        "id" : Math.floor(Math.random()),
-        "title" : input,
-        "completed" : false
-        };
-    addToDo(todo);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newTodo = {
+      id : Math.random(),
+      title: input,
+      completed: false
+    };
+    handleAddTodo(newTodo);
     setInput("");
   }
 
@@ -22,7 +22,7 @@ export default function ToDoForm({addToDo}) {
             className="todo-input"
             placeholder="What do you need to do?"
             value={input}
-            onChange={e => setInput(e.target.value)}
+            onChange={event=>setInput(event.target.value)}
           />
         </form>
   )

@@ -16,32 +16,38 @@ function App() {
     .then(todos => setTodos(todos))
   },[])
 
-  const addToDo = (todo) => {
+  // CRUD Operations
+
+  const handleAddTodo = (newTodo) => {
+    // server side update
     fetch('http://localhost:3001/todos',{
       method: "POST",
       headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(todo),
+      "Content-Type": "application/json",
+    },
+      body: JSON.stringify(newTodo)
     })
-    setTodos ((prevState) => [...prevState,todo])
+    // client side update
+    setTodos(prevTodos => [...prevTodos,newTodo])
   };
 
-  const deleteToDo = (todoID) => {
-    setTodos(prevState => {
-      return prevState.filter(todo=>{
-        return todo.id !== todoID;
-      });
-    })
+  const handleDeleteTodo = (deleteTodoID) => {
+    // client side update
+    setTodos(prevTodos => prevTodos.filter(prevTodo => {
+      return prevTodo.id !== deleteTodoID
+    }))
+  };
+
+  const handleUpdateTodo = () => {
+    console.log('this will be an update function')
   }
-  
 
   return (
     <div className="todo-app-container">
       <div className="todo-app">
         <h2>Todo App</h2>
-        <ToDoForm addToDo={addToDo}/>
-        <ToDoList todos={todos} deleteToDo={deleteToDo}/>
+        <ToDoForm handleAddTodo={handleAddTodo}/>
+        <ToDoList todos={todos} handleDeleteTodo={handleDeleteTodo}/>
         <CheckAllandRemaining/>
         <ClearCompletedBtn/>
       </div>

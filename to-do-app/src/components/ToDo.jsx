@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ToDo({todo,deleteToDo}) {
+export default function ToDo({todo, handleDeleteTodo}) {
   return (
     <li className="todo-item-container">
             <div className="todo-item">
@@ -8,7 +8,7 @@ export default function ToDo({todo,deleteToDo}) {
               <span className={`todo-item-label ${todo.completed? "line-through" : ""}`}>{todo.title}</span>
               {/* <input type="text" className="todo-item-input" value="Finish React Series" /> */}
             </div>
-            <button className="x-button" onClick={()=>deleteToDo(todo.id)}>
+            <button className="x-button" onClick={()=>handleDeleteTodo(todo.id)}>
               <svg
                 className="x-button-icon"
                 fill="none"
