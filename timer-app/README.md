@@ -17,4 +17,9 @@ Built to practice state management, refs, and interval handling with React hooks
 - `useEffect` for controlling side effects and cleaning up intervals properly  
 - Time calculations for both **counting up** (stopwatch) and **counting down** (timer)  
 - Accurate time formatting including **milliseconds**  
-- Separation of logic for two different modes in one app  
+- Separation of logic for two different modes in one app
+
+## 🖼️ Preview
+
+<img width="429" height="312" alt="image" src="https://github.com/user-attachments/assets/3c219773-3e7d-460d-8782-702f2e414d94" />
+
