@@ -2,7 +2,7 @@
 
 A simple **React.js** application that allows users to convert temperatures between **Celsius** and **Fahrenheit**. Built with a minimal, modern design for learning and demonstration purposes.
 
-## 🔹 Features
+## 🚀 Features
 
 - Convert **Celsius → Fahrenheit** and **Fahrenheit → Celsius** with a single input
 - Input validation: alerts the user if no value is entered
