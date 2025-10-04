@@ -1,3 +1,86 @@
 .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f7fa;
+  font-family: 'Arial', sans-serif;
+}
+.conversion-container {
+  background-color: #fff;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  width: 320px;
   text-align: center;
+}
+
+.conversion-container h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #555;
+  flex: 1;
+  text-align: left;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1.5;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+}
+
+.result {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  text-align: left;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.button-group .btn {
+  flex: 1;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }
