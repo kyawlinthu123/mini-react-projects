@@ -1,12 +1,22 @@
 import React from 'react'
+import useFetch from '../hooks'
+import './Home.css'
 
 export default function Home() {
-  return (
-    <div>
-        <h1> Home </h1>
-        <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, odit praesentium est odio beatae officiis, dignissimos cum asperiores aperiam unde recusandae impedit corrupti cumque deleniti molestias, quo eos voluptatum itaque.
-        </p>
-    </div>
+    let url = 'http://localhost:3001/blogs';
+    let { data:blogs , loading , error } = useFetch(url);
+    
+    return (
+        <div className='Home'>
+        {error &&  <div> {error} </div> }
+        {loading && <div> <span> Loading... </span> </div> }
+        {blogs && blogs.map((blog)=>{
+            return <div className='card' key={blog.id}>
+                <h3> {blog.title} </h3>
+                <p> <b> Author - {blog.author}</b> </p>
+                <p> {blog.content} </p>
+            </div>
+        })  }
+        </div>
   )
 }

@@ -1,0 +1,28 @@
+{
+    "blogs": [
+        {
+            "id": 1,
+            "title": "Getting Started with React",
+            "author": "Jane Doe",
+            "content": "React is a popular JavaScript library for building user interfaces. In this post, we'll cover the basics to get you started."
+        },
+        {
+            "id": 2,
+            "title": "Understanding JavaScript Closures",
+            "author": "John Smith",
+            "content": "Closures are a fundamental concept in JavaScript. This article explains how closures work and why they are useful."
+        },
+        {
+            "id": 3,
+            "title": "CSS Grid Layout Tutorial",
+            "author": "Emily Johnson",
+            "content": "CSS Grid makes it easy to create complex layouts. Learn how to use Grid to build responsive web designs."
+        },
+        {
+            "id": 4,
+            "title": "Tips for Effective Debugging",
+            "author": "Michael Lee",
+            "content": "Debugging is an essential skill for developers. Here are some tips and tools to help you debug your code efficiently."
+        }
+    ]
+}   
