@@ -1,28 +1,28 @@
 import { useState } from "react"
 
-export default function ToDoForm({handleAddTodo}) {
+export default function ToDoForm({handleAddToDo}) {
 
-  const [input,setInput] = useState("");
-
-  const handleSubmit = (event) => {
+  let [input,setInput] = useState("");
+  
+  let submitHandler = (event) => {
     event.preventDefault();
-    const newTodo = {
-      id : Math.random(),
-      title: input,
+    let newToDoItem = {
+      id : Math.random,
+      title : input,
       completed: false
     };
-    handleAddTodo(newTodo);
+    handleAddToDo(newToDoItem);
     setInput("");
   }
 
   return (
-     <form action="#" onSubmit={handleSubmit}>
+     <form onSubmit={submitHandler}>
           <input
             type="text"
             className="todo-input"
             placeholder="What do you need to do?"
             value={input}
-            onChange={event=>setInput(event.target.value)}
+            onChange={(event)=>setInput(event.target.value)}
           />
         </form>
   )

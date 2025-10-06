@@ -1,54 +1,106 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './reset.css';
 import './App.css';
 import ToDoForm from './components/ToDoForm';
 import ToDoList from './components/ToDoList';
-import CheckAllandRemaining from './components/CheckAllandRemaining'
+import FIlters from './components/FIlters';
 import ClearCompletedBtn from './components/ClearCompletedBtn';
 
 function App() {
 
-  const [todos,setTodos] = useState([]);
+  let [todos,setTodos] = useState([]);
 
-  useState(()=>{
+  useEffect(()=>{
     fetch('http://localhost:3001/todos')
-    .then(res => res.json())
-    .then(todos => setTodos(todos))
-  },[])
+    .then( res => res.json())
+    .then(todos => setTodos(todos));
+  },[]);
 
-  // CRUD Operations
-
-  const handleAddTodo = (newTodo) => {
+  // CRUD
+  // Add Function
+  let handleAddToDo = (newToDo) => {
+    // client side update
+    setTodos((prevTodos => [...prevTodos,newToDo]));
     // server side update
     fetch('http://localhost:3001/todos',{
       method: "POST",
       headers: {
-      "Content-Type": "application/json",
-    },
-      body: JSON.stringify(newTodo)
+        'Content-Type': 'application/json'
+      },
+      body : JSON.stringify(newToDo)
     })
-    // client side update
-    setTodos(prevTodos => [...prevTodos,newTodo])
   };
 
-  const handleDeleteTodo = (deleteTodoID) => {
+  // Delete Function
+  let handleDeleteToDo = (deleteToDoId) => {
+    // server side update
+    fetch(`http://localhost:3001/todos/${deleteToDoId}`,{
+      method: "DELETE"
+    })
     // client side update
-    setTodos(prevTodos => prevTodos.filter(prevTodo => {
-      return prevTodo.id !== deleteTodoID
+    setTodos((prevTodos) => prevTodos.filter(prevTodo =>{
+      return prevTodo.id !== deleteToDoId
     }))
   };
 
-  const handleUpdateTodo = () => {
-    console.log('this will be an update function')
+  // Update Function
+  // let handleUpdateToDo = (updatedToDoItem) => {
+  //   // server side update
+  //   fetch(`http://localhost:3001/todos/${updatedToDoItem.id}`,{
+  //     method : "PUT",
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body : JSON.stringify(updatedToDoItem)
+  //   })
+  //   // client side update
+  //   setTodos ((prevTodos) => prevTodos.map((prevTodo)=>{
+  //     // return prevTodo.id === updatedToDoItem.id? updatedToDoItem: prevTodo
+  //     if (prevTodo.id === updatedToDoItem.id){
+  //       return updatedToDoItem;
+  //     }
+  //     return prevTodo;
+  //   }))
+  // };
+
+  // Update Function
+let handleUpdateToDo = async (updatedToDoItem) => {
+  try {
+    // server side update
+    const res = await fetch(`http://localhost:3001/todos/${updatedToDoItem.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: updatedToDoItem.title,
+        completed: updatedToDoItem.completed,
+      }),
+    });
+
+    if (!res.ok) throw new Error("Failed to update todo");
+
+    const updatedTodoFromServer = await res.json();
+
+    // client side update
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === updatedTodoFromServer.id ? updatedTodoFromServer : todo
+      )
+    );
+  } catch (err) {
+    console.error(err);
   }
+};
+
 
   return (
     <div className="todo-app-container">
       <div className="todo-app">
         <h2>Todo App</h2>
-        <ToDoForm handleAddTodo={handleAddTodo}/>
-        <ToDoList todos={todos} handleDeleteTodo={handleDeleteTodo}/>
-        <CheckAllandRemaining/>
+        <ToDoForm handleAddToDo={handleAddToDo}/>
+        <ToDoList todos={todos} handleDeleteToDo={handleDeleteToDo} handleUpdateToDo={handleUpdateToDo} />
+        <FIlters/>
         <ClearCompletedBtn/>
       </div>
     </div>

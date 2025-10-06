@@ -1,12 +1,13 @@
-import React from 'react'
-import ToDo from './ToDo'
+import React, { useState } from 'react'
+import ToDoItem from './ToDoItem';
 
-export default function ToDoList({todos, handleDeleteTodo}) {
+export default function ToDoList({todos, handleDeleteToDo, handleUpdateToDo}) {
+
   return (
     <ul className="todo-list">
-        {todos.map((todo)=>(
-            <ToDo key={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo}/>
-        ))}  
+          {todos.map(todo =>(
+            <ToDoItem key={todo.id} todo={todo} handleDeleteToDo={handleDeleteToDo} handleUpdateToDo={handleUpdateToDo} />
+          ))}
     </ul>
   )
 }
