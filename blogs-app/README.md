@@ -1,22 +1,29 @@
-📰 Blogs App
+#📰 Blogs App
 
-A mini React.js project that displays a list of blog posts fetched from a JSON server using a custom React hook. The app also uses React Router for navigation between pages (Home and About).
+This is a mini React app I built to practice routing and fetching data from a fake API using JSON Server.
+It was a simple project but helped me understand a few important React concepts better.
 
-This project helped me practice data fetching, custom hooks, and routing in React — all fundamental concepts for building modern web apps.
+## What I Learned
 
-🚀 Features
+Setting up React Router
 
-📡 Fetch blog data dynamically from a JSON server
+Creating Dynamic Routes with React Router
 
-🧩 Custom React Hook for data fetching logic
+Using Programmatic Redirection after deleting a blog
 
-🧭 Navigation using React Router DOM (v6)
+Building a Custom 404 Page for invalid routes
 
-🧱 Clean and reusable component structure
+## Tech Stack
 
-💅 Simple, minimal, and responsive UI design
+React.js
 
-🖼️ Preview
+React Router DOM
+
+JSON Server
+
+CSS
+
+## 🖼️ Preview
 
 <img width="1792" height="958" alt="Screenshot from 2025-10-07 03-01-57" src="https://github.com/user-attachments/assets/0c13b386-0def-4869-bbc3-090293c16a71" />
 
