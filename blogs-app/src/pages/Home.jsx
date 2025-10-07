@@ -1,6 +1,7 @@
 import React from 'react'
 import useFetch from '../hooks'
 import './Home.css'
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     let url = 'http://localhost:3001/blogs';
@@ -15,6 +16,7 @@ export default function Home() {
                 <h3> {blog.title} </h3>
                 <p> <b> Author - {blog.author}</b> </p>
                 <p> {blog.content} </p>
+                <Link to={`/blogs/${blog.id}`} > Read More... </Link>
             </div>
         })  }
         </div>
