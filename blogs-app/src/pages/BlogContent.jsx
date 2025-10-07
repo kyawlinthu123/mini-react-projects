@@ -1,5 +1,5 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import useFetch from '../hooks';
 
 export default function BlogContent() {
@@ -7,6 +7,17 @@ export default function BlogContent() {
     let params = useParams();
     let url = 'http://localhost:3001/blogs/' + params.id;
     let {data : blog , loading , error} = useFetch(url);
+
+    // Navigate to Home Page feature
+    let navigateToHomePage = useNavigate();
+
+    useEffect(()=>{
+      if(error){
+        setTimeout(()=>(
+          navigateToHomePage('/')
+        ),2000)
+      }
+    },[error,navigateToHomePage])
 
   return (
    <div>
