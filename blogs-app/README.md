@@ -9,7 +9,7 @@ Setting up React Router
 
 Creating Dynamic Routes with React Router
 
-Using Programmatic Redirection after deleting a blog
+Using Programmatic Redirection
 
 Building a Custom 404 Page for invalid routes
 
