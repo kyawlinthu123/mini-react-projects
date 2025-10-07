@@ -1,4 +1,4 @@
-#📰 Blogs App
+# 📰 Blogs App
 
 This is a mini React app I built to practice routing and fetching data from a fake API using JSON Server.
 It was a simple project but helped me understand a few important React concepts better.
